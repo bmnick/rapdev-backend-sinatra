@@ -6,8 +6,6 @@ require File.expand_path(File.join(File.dirname(__FILE__), "game"))
 class RapDevBackend < Sinatra::Base
   configure do
     set :root, File.join(File.dirname(__FILE__), '..')
-    set :views, Proc.new { File.join(root, "views") }
-    set :public_folder, Proc.new { File.join(root, "public") }
     
     set :haml, :format => :html5
     
@@ -20,8 +18,8 @@ class RapDevBackend < Sinatra::Base
   end
   
   get '/new_game' do
-    game = Game.new(GAMES.count)
-    GAMES << game
+    GAMES << Game.new(GAMES.count)
+    
     redirect '/', 303
   end
   
@@ -44,11 +42,11 @@ class RapDevBackend < Sinatra::Base
     if GAMES.size > id.to_i
       game = GAMES[id.to_i]
       
-      x = params[:x_pos].to_i
-      y = params[:y_pos].to_i
-      c = params[:character]
+      xpos = params[:x_pos].to_i
+      ypos = params[:y_pos].to_i
+      char = params[:character]
     
-      game.make_move c, x, y
+      game.make_move char, xpos, ypos
     
       redirect game_path(id), 303
     else
