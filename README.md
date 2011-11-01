@@ -13,7 +13,7 @@ Designed to not use anything with native extensions, so it should be compatible 
 1. Go through the setup involved (git user name, email and ssh key - this needs to go on github)
 1. Clone the project "git clone git://github.com/bmnick/rapdev-backend-sinatra.git" and enter with "cd rapdev-backend-sinatra"
 1. Run bundler with "bundle install"
-1. Start the server with "rackup config.ru"
+1. Start the server with "bundle exec rackup config.ru"
 1. Visit the site at "http://localhost:9292" or whatever other port it says when you started your server.
 1. If you make changes and don't use another server, you'll need to restart your server on every change to the ruby files.
 
@@ -28,7 +28,7 @@ Designed to not use anything with native extensions, so it should be compatible 
 1. Install bundler with "gem install bundler" (the prerelease version is faster but may be buggier "gem install bundler --pre")
 1. Clone the project "git clone git://github.com/bmnick/rapdev-backend-sinatra.git" and enter with "cd rapdev-backend-sinatra"
 1. Run bundler with "bundle install"
-1. Start up the server with "rackup config.ru" (you can also use shotgun, thin, unicorn, or any other rack compliant webserver, but those are not all windows compatible so not suggested by default)
+1. Start up the server with "bundle exec rackup config.ru" (you can also use shotgun, thin, unicorn, or any other rack compliant webserver, but those are not all windows compatible so not suggested by default)
 1. Visit the site at "http://localhost:9292" or whatever other port it says when you started your server.
 1. If you make changes and don't use another server, you'll need to restart your server on every change to the ruby files.
 
