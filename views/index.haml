@@ -1,18 +1,10 @@
-%h1 Tic Tac Toe board
-#board
-  %table
-    -@board.each_with_index do |line, rownum|
-      %tr{:class => "row"}
-        -line.each_with_index do |point, colnum|
-          %td{:class => "cell column-#{colnum} row-#{rownum}"}
-            =point
--if @winning
-  %p
-    Someone won!
-%form{ :action => "/move", :method => "post"}
-  %fieldset
-    #inputs
-      %input{:title => "ypos", :type => "text", :name => "y_pos", :class => "text", :placeholder => "0-3", :id => "ypos", :disabled => @winning}
-      %input{:title => "xpos", :type => "text", :name => "x_pos", :class => "text", :placeholder => "0-3", :id => "xpos", :disabled => @winning}
-      %input{:title => "character", :type => "text", :name => "character", :class => "text", :placeholder => "X or O", :disabled => @winning}
-      %input{:type => "submit", :value => "Make a move!", :class => "button", :disabled => @winning}
+%h1 Tic Tac Toe games
+%ul
+  -if @games.count >  0
+    -@games.each do |game|
+      %li
+        %a{ :href => game_path(game.id) }
+          = "Game #{game.id}: #{game.win? ? 'won' : 'still going' }"
+  -else
+    %p No games yet!
+%a{ href: '/new_game' } New Game

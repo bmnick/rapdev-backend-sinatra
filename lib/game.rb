@@ -1,9 +1,11 @@
 class Game
   attr_accessor :board
+  attr_accessor :id
   
-  def initialize
+  def initialize(id)
     @board = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
     @num_moves = 0
+    @id = id
   end
   
   def make_move character, x_pos, y_pos

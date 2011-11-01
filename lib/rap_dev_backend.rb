@@ -11,26 +11,57 @@ class RapDevBackend < Sinatra::Base
     
     set :haml, :format => :html5
     
-    GAME = Game.new
+    GAMES = Array.new
   end
   
   get '/' do
-    @board = GAME.board
-    @winning = GAME.win?
+    @games = GAMES
     haml :index
   end
   
-  post '/move' do
-    x = params[:x_pos].to_i
-    y = params[:y_pos].to_i
-    c = params[:character]
+  get '/new_game' do
+    game = Game.new(GAMES.count)
+    GAMES << game
+    redirect '/', 303
+  end
+  
+  get '/game/:id' do |id|
+    if GAMES.size > id.to_i
+      game = GAMES[id.to_i]
+      
+      @board = game.board
+      @winning = game.win?
+      @game_id = game.id
+      
+      haml :game
+    else
+      GAMES.to_s
+      # haml :notfound
+    end
+  end
+  
+  post '/game/:id/move' do |id|
+    if GAMES.size > id.to_i
+      game = GAMES[id.to_i]
+      
+      x = params[:x_pos].to_i
+      y = params[:y_pos].to_i
+      c = params[:character]
     
-    GAME.make_move c, x, y
+      game.make_move c, x, y
     
-    redirect '/', 301
+      redirect game_path(id), 303
+    else
+      haml :notfound
+    end
   end
   
   get '/style.css' do
 		sass :style
 	end
+	
+	private
+	  def game_path id
+	   "/game/#{id}"
+	  end
 end
