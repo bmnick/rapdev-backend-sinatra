@@ -1,0 +1,11 @@
+!!!
+%html{:lang => 'en'}
+  %head
+    %meta{:charset => 'utf-8'}
+    %title Super Awesome URL Shortener
+    %link{:rel=>'stylesheet', :href=>'/style.css', :type => "text/css"}
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"}
+    %script{:src => 'application.js', :type => "text/javascript"}
+  %body
+    #container
+      = yield

@@ -1,0 +1,58 @@
+$topgrey: #ccc
+$bottomgrey: #779
+$darkgrey: #446
+
+@mixin rounded ($radius)
+  -webkit-border-radius: $radius
+  -moz-border-radius: $radius
+  border-radius: $radius
+  
+@mixin linear-gradient ($topcolor, $bottomcolor) 
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($topcolor), to($bottomcolor))
+  
+html,body
+  background: 
+    image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($topgrey), to($bottomgrey))
+    repeat: none
+  height: 100%
+  width: 100%
+  font:
+    family: "gill sans", sans
+
+h1
+  text-align: center
+ 
+#userinput
+  width: 50em
+  margin: 0px auto
+  text-align: center
+
+#board
+  width: 100%
+
+table
+  margin: 0 auto
+
+
+td
+  font-size: 1.5em
+  width: 3em
+  height: 3em
+  border: thin solid black
+  text-align: center
+  @include linear-gradient($topgrey, $darkgrey)
+  
+fieldset
+  width: 40em
+  margin: 0 auto
+
+input
+  font-size: 1.5em
+  width: 5em
+
+input[type="submit"]
+  width: 10em
+  border: 
+    width: 2px
+    color: $darkgrey
+  background-color: $topgrey
