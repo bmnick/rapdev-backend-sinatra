@@ -24,7 +24,7 @@ Designed to not use anything with native extensions, so it should be compatible 
 1. (optionally) Install any additional necessary packages for rvm to work on your system (readline, build-essential, etc.)
 1. Install ruby 1.9.2 via "rvm install 1.9.2"
 1. Start using 1.9.2 "rvm use 1.9.2"
-1. (optional, but recommended) create a gemset for the project "rvm gemset create <project name>" and use with "rvm use 1.9.2@<project name>"
+1. (optional, but recommended) create a gemset for the project "rvm gemset create [project name]" and use with "rvm use 1.9.2@[project name]"
 1. Install bundler with "gem install bundler" (the prerelease version is faster but may be buggier "gem install bundler --pre")
 1. Clone the project "git clone git://github.com/bmnick/rapdev-backend-sinatra.git" and enter with "cd rapdev-backend-sinatra"
 1. Run bundler with "bundle install"
