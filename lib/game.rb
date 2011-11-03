@@ -4,13 +4,11 @@ class Game
   
   def initialize(id)
     @board = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
-    @num_moves = 0
     @id = id
   end
   
   def make_move character, x_pos, y_pos
     @board[y_pos][x_pos] = character
-    @num_moves += 1
   end
   
   def win?
